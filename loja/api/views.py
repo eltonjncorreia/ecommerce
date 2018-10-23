@@ -1,17 +1,13 @@
-from rest_framework.views import APIView
-from .serializers import ProdutoSerializer
-from .models import Produto
+from rest_framework.generics import ListCreateAPIView
+from .serializers import ProdutoSerializer, CategoriaSerializer
+from .models import Produto, Categoria
 
 
-class ProdutoViewSet(APIView):
+class ProdutoView(ListCreateAPIView):
     queryset = Produto.objects.all()
     serializer_class = ProdutoSerializer
 
-    @classmethod
-    def get(cls, request):
-        url = 'https://api.github.com/users'
-        response = requests.get(url)
-        usuarios = response.json()
-        serializer = UserGithubSerializer(usuarios, many=True)
-        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
+class CategoriaView(ListCreateAPIView):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
