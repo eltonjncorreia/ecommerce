@@ -3,7 +3,7 @@ import uuid
 
 
 class Produto(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     nome = models.CharField(max_length=255)
     descricao = models.CharField(max_length=255)
     preco = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
@@ -31,7 +31,7 @@ class Pedido(models.Model):
 
 
 class Categoria(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     nome = models.CharField(max_length=255)
 
     def __str__(self):
