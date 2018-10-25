@@ -3,6 +3,8 @@ from rest_framework.generics import RetrieveUpdateDestroyAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from loja.api.trello.trello import cartao_trello
+
 from .serializers import PedidoSerializer
 from .serializers import ProdutoSerializer
 from .serializers import CategoriaSerializer
@@ -20,11 +22,6 @@ class ProdutoDetailView(RetrieveUpdateDestroyAPIView):
     serializer_class = ProdutoSerializer
 
 
-class CategoriaView(ListCreateAPIView):
-    queryset = Categoria.objects.all()
-    serializer_class = CategoriaSerializer
-
-
 class PedidoView(APIView):
     serializer_class = PedidoSerializer
 
@@ -35,11 +32,11 @@ class PedidoView(APIView):
 
     def post(self, request, format=None):
         dados = self.soma_preco_produto(request)
-        dados['status'] = dados['status'][0]
 
         serializer = PedidoSerializer(data=dados)
         if serializer.is_valid():
             serializer.save()
+            cartao_trello(request, serializer.data['id'], serializer.data['produto'])
             return Response(serializer.data)
         return Response(serializer.errors)
 
@@ -52,5 +49,11 @@ class PedidoView(APIView):
             lista_preco_produto.append(produto.preco)
 
         dados['preco'] = sum(lista_preco_produto)
-
+        dados['status'] = dados['status'][0]
         return dados
+
+
+class CategoriaView(ListCreateAPIView):
+    queryset = Categoria.objects.all()
+    serializer_class = CategoriaSerializer
+
