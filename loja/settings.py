@@ -42,9 +42,11 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'rest_framework',
     'loja.api',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -125,3 +127,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'statifiles')
 
 API_KEY = config('API_KEY')
 API_TOKEN = config('API_TOKEN')
+
+
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = (
+    'http//:localhost:8000',
+    'http://herokuapp.com',
+)
