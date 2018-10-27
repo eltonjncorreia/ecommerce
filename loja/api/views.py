@@ -53,6 +53,11 @@ class PedidoView(APIView):
         return dados
 
 
+class PedidoDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = Pedido.objects.all()
+    serializer_class = PedidoSerializer
+
+
 class CategoriaView(ListCreateAPIView):
     queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializer
