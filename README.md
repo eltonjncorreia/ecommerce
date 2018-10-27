@@ -8,7 +8,7 @@
 ```
 https://api-ecommerce-trello.herokuapp.com/api/v1/produtos/
 
-https://api-ecommerce-trello.herokuapp.com/api/v1/produtos/uuid
+https://api-ecommerce-trello.herokuapp.com/api/v1/produtos/{uuid}
 ```
 
 ##### Pedidos
@@ -16,7 +16,7 @@ https://api-ecommerce-trello.herokuapp.com/api/v1/produtos/uuid
 ```
 https://api-ecommerce-trello.herokuapp.com/api/v1/pedidos
 
-https://api-ecommerce-trello.herokuapp.com/api/v1/pedidos/1
+https://api-ecommerce-trello.herokuapp.com/api/v1/pedidos/{1}
 ```
 
 ##### Categorias
