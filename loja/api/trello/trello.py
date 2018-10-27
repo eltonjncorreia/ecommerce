@@ -13,14 +13,15 @@ def cartao_trello(request, pedido=None, descricao=None):
     my_boards = cliente.get_board('6CMTUQRG')
     lista = my_boards.all_lists()
 
+    lista_produto = []
     for id in descricao:
         produto = Produto.objects.get(id=id)
-        descricao = f"{produto.nome}, {produto.descricao}, {produto.preco}"
+        descricao = f"{produto.nome} {produto.descricao} R$: {produto.preco}"
+        lista_produto.append(descricao)
 
+    componentes = " ,\n".join(lista_produto)
     pedido = json.dumps(pedido, cls=UUIDEncoder)
-    desc = json.dumps(descricao, cls=UUIDEncoder)
-    lista[0].add_card(name="Pedido "+pedido, desc=desc, position=0)
-
+    lista[0].add_card(name="Pedido "+pedido, desc="Componentes:\n"+componentes, position=0)
 
 
 class UUIDEncoder(json.JSONEncoder):
