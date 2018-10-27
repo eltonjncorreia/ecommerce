@@ -14,7 +14,6 @@ class ProdutoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Produto
         fields = '__all__'
-        depth = 1
 
 
 class EstoqueSerializer(serializers.ModelSerializer):
@@ -27,5 +26,4 @@ class PedidoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pedido
         fields = '__all__'
-        depth = 2
 
