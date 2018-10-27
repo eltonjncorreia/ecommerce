@@ -7,7 +7,7 @@ app_name = 'api'
 
 urlpatterns = [
     path('v1/produtos/', ProdutoView.as_view(), name="produtos"),
-    path('v1/produtos/<uuid:pk>/', ProdutoDetailView.as_view(), name="produto-detail"),
+    path('v1/produtos/<int:pk>/', ProdutoDetailView.as_view(), name="produto-detail"),
     path('v1/categorias/', CategoriaView.as_view(), name="categorias"),
     path('v1/pedidos/', PedidoView.as_view(), name="pedidos"),
     path('v1/pedidos/<int:pk>/', PedidoDetailView.as_view(), name="pedido-detail"),
