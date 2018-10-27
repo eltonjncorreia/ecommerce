@@ -39,10 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework_swagger',
     'rest_framework',
     'loja.api',
-    'corsheaders',
+    
 ]
 
 MIDDLEWARE = [
@@ -129,9 +130,5 @@ API_KEY = config('API_KEY')
 API_TOKEN = config('API_TOKEN')
 
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_WHITELIST = (
-    'http//:localhost:8000',
-    'https://api-ecommerce-trello.herokuapp.com/api/v1/produtos/',
-)
