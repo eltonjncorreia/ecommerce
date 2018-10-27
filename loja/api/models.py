@@ -21,7 +21,6 @@ class Pedido(models.Model):
               ('RT', 'Realização de testes'),
               ('CO', 'Concluido'))
 
-    id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
     produto = models.ManyToManyField('Produto', related_name='produtos_em_pedidos')
     preco = models.DecimalField(max_digits=8, decimal_places=2, default=0.0)
     status = models.CharField(max_length=2, choices=STATUS, default='PR')
