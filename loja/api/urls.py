@@ -3,7 +3,7 @@ from .views import ProdutoView, ProdutoDetailView
 from .views import CategoriaView
 from .views import PedidoView, PedidoDetailView
 
-app_name = 'api'
+app_name = 'api_name'
 
 urlpatterns = [
     path('v1/produtos/', ProdutoView.as_view(), name="produtos"),
